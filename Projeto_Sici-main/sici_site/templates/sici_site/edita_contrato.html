@@ -1,0 +1,22 @@
+{% extends 'sici_site/base_SIDOM.html' %}
+{% load if_str_None %}
+{% load humanize %}
+
+{% block conteudo %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+
+
+            <table class="table" id="tabela_contratos_diario_dia">
+
+                {{ form.as_table }}
+
+            </table>
+
+            <button id="edit" type="submit" value="Salvar">Salvar</button>
+
+    </form>
+
+{% endblock %}

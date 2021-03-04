@@ -1,0 +1,45 @@
+{% extends 'sici_site/base.html' %}
+
+{% load if_str_None %}
+
+{% block conteudo %}
+
+        <h3><a href="/">Nova Consulta</a></h3>
+
+        <div class="row2">
+            {% if dados %}
+                <table class="table" id="tabela_nome_ua">
+                    <thead>
+                    <tr>
+                        <th>Código da Unidade</th>
+                        <th>Nome da Unidade</th>
+                        <th>Titular</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dado in dados %}
+                        <tr>
+                            <td><u><a href="/unidade/{{ dado.cd_ua }}">{{ dado.cd_ua }}</a></u></td>
+                            <td>{{ dado.nome_ua }}</td>
+                            <td>{{ dado.titular | if_str_None:'Titular não cadastrado' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                {% if tipo != None %}
+                    <table class="table" id="refaca_busca">
+                        <thead>
+                        <tr>
+                            <th>Nenhum resultado encontrato. Por favor, tente novamente!</th>
+                        </tr>
+                        </thead>
+                    </table>
+                {% endif %}
+            {% endif %}
+        </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="static\js\input.js"></script>
+{% endblock %}

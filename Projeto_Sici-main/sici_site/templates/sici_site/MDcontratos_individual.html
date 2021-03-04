@@ -1,0 +1,130 @@
+{% extends 'sici_site/base.html' %}
+
+{% load if_str_None %}
+{% load humanize %}
+
+{% block conteudo %}
+     <div class="container">
+
+         <h3 id="link_nova_consulta"><a href="/MDcontratos">Nova Consulta</a></h3>
+
+         {% if dados %}
+         {% for dado in dados %}
+
+        <form method="POST"
+        <div class="row2">
+            <table class="table" id="tabela_cd_ua">
+                <thead>
+                    <tr>
+                        <th scope="col">Data do Diário</th>
+                        <td>
+                            <a href='/edita_contrato/{{ dado.anoctoug }}'> {{ dado.data_diario | date:'d/m/Y' }}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Data de Assinatura do Contrato</th>
+                        <td>
+                            {{ dado.data_assinatura }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número do Contrato</th>
+                        <td>
+                            {{ dado.num_contrato | if_str_None:"Número do Contrato não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Ano do Contrato</th>
+                        <td>
+                            {{ dado.ano_contrato | if_str_None:"Ano do Contrato não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Código da Unidade</th>
+                        <td>
+                            {{ dado.ug_contrato | if_str_None:"Código de Unidade não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Valor do Contrato</th>
+                        <td>
+                            {{ dado.valor_contrato | if_str_None:"Valor não Cadastrado" | intcomma}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Ano Visualização</th>
+                        <td>
+                            {{ dado.ano_visualizacao | if_str_None:"Ano Visualização não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Fundamento</th>
+                        <td>
+                            {{ dado.fundamento | if_str_None:"Fundamento não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número do Contrato Visualização</th>
+                        <td>
+                            {{ dado.num_cto_visualizacao | if_str_None:"Código de Unidade não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número do Processo</th>
+                        <td>
+                            {{ dado.num_processo | if_str_None:"Número de Processo não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Objeto</th>
+                        <td>
+                            {{ dado.objeto | if_str_None:"Objeto não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Partes</th>
+                        <td>
+                            {{ dado.partes | if_str_None:"Partes não Cadastradas" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número do PT</th>
+                        <td>
+                            {{ dado.pt | if_str_None:"PT não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número do PT sem Formatação</th>
+                        <td>
+                            {{ dado.pt_numeros | if_str_None:"PT não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Número do PT Visualização</th>
+                        <td>
+                            {{ dado.pt_visualizacao | if_str_None:"PT não Cadastrado" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Ano/Contrato/UG</th>
+                        <td>
+                            {{ dado.anoctoug }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Observações</th>
+                        <td>
+                            {{ dado.observacoes }}
+                        </td>
+                    </tr>
+                </table>
+                <button>Salvar</button>
+        </form>
+            </div>
+         {% endfor %}
+         {% else %}
+            <h3><a href="/">Nova Consulta</a></h3>
+            <h3 id="link_consulta_geral"><a href="geral/">Consultar Todos os Registros</a></h3>
+         {% endif %}
+    </div>
+{% endblock %}

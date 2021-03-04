@@ -1,0 +1,53 @@
+{% extends 'sici_site/base_SIDOM.html' %}
+{% block conteudo %}
+
+{% load humanize %}
+
+
+<div class="container">
+
+         <h3 id="link_nova_consulta_sidom"><a href="/MDcontratos">Nova Consulta</a></h3>
+
+        <div class="row2">
+
+
+            <table class="table" id="tabela_contratos_diario_dia">
+                <thead>
+                    <tr>
+                        <th>Data do Diário</th>
+                        <th>Data de Assinatura</th>
+                        <th>Número do Contrato</th>
+                        <th>Ano Contrato</th>
+                        <th>Unidade</th>
+                        <th>Valor</th>
+                        <th>Ação</th>
+                    </tr>
+                    <div class="input_tabela">
+                    <tr>
+                        <th><input type="text" id="txtColuna1"/></th>
+                        <th><input type="text" id="txtColuna2"/></th>
+                        <th><input type="text" id="txtColuna3"/></th>
+                        <th><input type="text" id="txtColuna4"/></th>
+                        <th><input type="text" id="txtColuna5"/></th>
+                        <th><input type="text" id="txtColuna6"/></th>
+                    </tr>
+                    </div>
+
+                    {% if dados %}
+                    {% for dado in dados %}
+
+                    <tr>
+                        <td>{{ dado.data_diario | date:'d/m/Y' }}</td>
+                        <td>{{ dado.data_assinatura }}</td>
+                        <td>{{ dado.num_contrato}} </td>
+                        <td>{{ dado.ano_contrato}} </td>
+                        <td>{{ dado.ug_contrato}} </td>
+                        <td>{{ dado.valor_contrato | intcomma}} </td>
+
+                        <td><a href="/edita_contrato/{{ dado.id }}">Editar</a></td>
+                    </tr>
+                    {% endfor %}
+        </table>
+
+{% endif %}
+{% endblock %}

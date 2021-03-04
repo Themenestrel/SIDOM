@@ -1,0 +1,49 @@
+{% extends 'sici_site/base_SIDOM.html' %}
+{% csrf_token %}
+{% load if_str_None %}
+
+{% block conteudo %}
+
+
+        <h3><a href="/">Voltar</a></h3>
+        <h3 id="link_consulta_geral"><a href="/MDcontratos_total">Consultar Todos os Diários</a></h3>
+        <div class="col-sm-4">
+            <form method="get">
+                <div class="input-group">
+                    <span class="input-group-text">Pesquisar por data:</span>
+                    <input id="data_diario" name="data" type="date" class="form-control" required>
+                    <button id="pesquisa_unidade">Pesquisar</button>
+                </div>
+            </form>
+        </div>
+
+
+            {% if dados %}
+                <table class="table" id="tabela_nome_ua">
+                    <thead>
+                    <tr>
+                        <th>Data do Diário</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dado in dados %}
+                        <ul>
+                            <u><a id="'data_diario" href="/MDcontratos_individual/" type="date">{{ dado.data_diario | date:'d/m/Y' }}
+                        </ul>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                {% if tipo != None %}
+                    <table class="table" id="refaca_busca">
+                        <thead>
+                        <tr>
+                            <th>Nenhum resultado encontrato. Por favor, tente novamente!</th>
+                        </tr>
+                        </thead>
+                    </table>
+                {% endif %}
+            {% endif %}
+
+
+{% endblock %}

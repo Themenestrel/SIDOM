@@ -1,0 +1,65 @@
+{% extends 'sici_site/base_siconi.html' %}
+
+{% load if_str_None %}
+
+{% block conteudo %}
+    <div class="container">
+            <div class="col-sm-4">
+                {% if tipo == None %}
+                    <form action='/' method="GET">
+                        <label id="texto" for="tipo_consulta"></label>
+                        <select class="select-css" id="tipo_consulta" name="consulta" onchange="inputTipo(this.value)">
+                            <option value="" selected hidden>Selecione o Tipo de Consulta</option>
+                            <option value="cd_ua">Código da Unidade</option>
+                            <option value="nome">Nome da Unidade</option>
+                            <option value="titular">Nome do Gestor</option>
+                        </select>
+
+                        <input id="busca" type="text" placeholder="Digite o Código da Unidade" value="" name="busca"
+                               required hidden><br>
+                        <button id="pesquisar">Pesquisar<i class="fa fa-search"></i></button>
+                    </form>
+                {% else %}
+                    <h3><a href="/">Nova Consulta</a></h3>
+                    <h3 id="link_consulta_geral"><a href="geral/">Consultar Todos os Registros</a></h3>
+                {% endif %}
+            </div>
+
+        <div class="row2">
+            {% if dados %}
+                <table class="table" id="tabela_nome_ua">
+                    <thead>
+                    <tr>
+                        <th>Código da Unidade</th>
+                        <th>Nome da Unidade</th>
+                        <th>Titular</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dado in dados %}
+                        <tr>
+                            <td><u><a href="unidade/{{ dado.cd_ua }}">{{ dado.cd_ua }}</a></u></td>
+                            <td>{{ dado.nome_ua }}</td>
+                            <td>{{ dado.titular | if_str_None:'Titular não cadastrado' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                {% if tipo != None %}
+                    <table class="table" id="refaca_busca">
+                        <thead>
+                        <tr>
+                            <th>Nenhum resultado encontrato. Por favor, tente novamente!</th>
+                        </tr>
+                        </thead>
+                    </table>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="static\js\input.js"></script>
+{% endblock %}

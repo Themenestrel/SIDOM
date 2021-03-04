@@ -1,0 +1,35 @@
+{% extends 'sici_site/base_SIDOM.html' %}
+
+{% load if_str_None %}
+
+{% block conteudo %}
+
+
+            {% if dados %}
+                <table class="table" id="tabela_nome_ua">
+                    <thead>
+                    <tr>
+                        <th>Data do Diário</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dado in dados %}
+                        <ul>
+                            <u><a id="'data_diario" href="/home_SIDOM/" type="date">{{ dado.data_diario | date:'d/m/Y' }}
+                        </ul>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                {% if tipo != None %}
+                    <table class="table" id="refaca_busca">
+                        <thead>
+                        <tr>
+                            <th>Nenhum resultado encontrato. Por favor, tente novamente!</th>
+                        </tr>
+                        </thead>
+                    </table>
+                {% endif %}
+            {% endif %}
+
+{% endblock %}

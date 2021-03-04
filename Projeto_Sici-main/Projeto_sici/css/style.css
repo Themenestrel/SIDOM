@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+div#interface {
+	width: 1200px;
+	background-color: #ffffff;
+	margin: -20px auto 10px auto;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+	padding: 35px;
+	height: 100%;
+	border: 2px solid #069;
+	background-attachment: scroll;
+	display: flex;
+	flex-direction: column;
+}
+
+body {
+	background-color: #dddddd;
+	color: rgba(0,0,0,0.8);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	background-attachment: scroll;
+	display: flex;
+	flex-direction: column;
+}
+
+p {
+	text-align: justify; 
+	text-indent: 50px;
+}
+
+a {
+	color: #606060;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input[type=text], select {
+	width: 100%;
+	padding: 4px 11px;
+	margin: 4px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+button {
+	width: 350px;
+	text-align: center;
+	box-shadow: 2px 4px 2px #c69500 ;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 18px;
+	background-color: #FCC302;
+	font-size: 25px;
+	font-palette: dark;
+	font-weight: 500;
+	text-shadow: 0.8px 0.8px 0.8px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+}
+button:hover {
+	background: #008000	;
+	color: #dddddd;
+	box-shadow: 1px 4px 1px #006400;
+	border: none;
+}
+
+button:active {
+	position: relative;
+	top: 5px;
+	box-shadow: none;
+	border: none;
+	border
+}
+
+button:focus{
+	outline: 0 auto -webkit-focus-ring-color;
+	outline-offset: 0;
+}
+
+div.jumbotron h1 {
+	font-size: 25pt;
+	color: #000000;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
+	padding: 1px;
+	margin-bottom: 25px;
+	text-align: center;
+	align-items: center;
+}
+
+div.jumbotron {
+	background-color: #9fcdff;
+	height: 20%;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+}
+
+div.container h3 {
+	text-align: center;
+	color: #0b2e13;
+	padding: 0px;
+	margin-top: 0px;
+}
+
+div.topnav a {
+	display: inline-block;
+	font-size: 12pt;
+	margin-bottom: 10px;
+	justify-content: normal;
+	text-align: center;
+	align-items: center;
+	font-palette: dark;
+	margin-left: 50px;
+	margin-right: 50px;
+	color: #000000;
+}
+
+div.topnav {
+	margin-top: -55px;
+	margin-bottom: -30px;
+	text-align: center;
+	align-items: center;
+}
+
+input {
+	text-align: center;
+	background-color: #cce5ff;
+	color: #1c7430;
+	font-weight: bold;
+}
+
+footer#rodape {
+	clear: both;
+	border-top: 3px solid #606060;
+	bottom: 0px;
+	text-align: center;
+	position: relative;
+	margin-bottom: -30px;
+	margin-top: 0px;
+}
+
+footer#rodape p {
+	text-align: center;
+}
+
+footer#rodape a {
+	text-decoration: underline;
+	text-align: center;
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 0px;
+	margin-bottom: 0px
+	color: #cce5ff;
+}
+
+footer#rodape a:hover {
+	color: #9fcdff;
+}

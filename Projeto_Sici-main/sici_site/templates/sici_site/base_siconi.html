@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+{% load static %}
+<head>
+    <title>SICONI</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+</head>
+
+<body>
+<div class="container" id="interface">
+    <div class="jumbotron text-center">
+        <div class="topnav">
+            <a class="active" href="/">Home</a>
+        </div>
+        <br>
+        <h1>Sistema Integrado de Consulta Institucional</h1>
+        <img id="icone_tcm" width="42%" alt="logotipo" src="{% static '/imagens/Logotipo_v02/logo_tcmrj_horizontal_GRADIENTE-RGB.png' %}"/>
+    </div>
+
+    {% block conteudo %}
+
+    {% endblock %}
+</div>
+
+<footer id="rodape">
+    <p>Copyright &copy; 2020 - Núcleo de Gestão da Informação - SGCE - (21) 3824-3639<br>
+        <a href="http://tcmrj" target="_blank">Intranet</a>
+        <a href="http://tcmrj/intranet/WEB/Site/Noticia_Detalhe.aspx?noticia=13628&detalhada=3&downloads=0"
+           target="_blank">Ferramenta de Análise de Contratos</a>
+    </p>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% block scripts %}
+
+{% endblock %}
+
+</body>
+</html>

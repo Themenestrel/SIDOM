@@ -1,0 +1,41 @@
+{% extends 'sici_site/base.html' %}
+
+{% load if_str_None %}
+
+{% block conteudo %}
+
+        <h3><a href="/">Voltar</a></h3>
+
+        <div class="row2">
+            {% if dados %}
+                <table class="table" id="tabela_nome_ua">
+                    <thead>
+                    <tr>
+                        <th>Código da Unidade</th>
+                        <th>Data do Diário</th>
+                        <th>Data de Assinatura</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dado in dados %}
+                        <tr>
+                            <td><u><a href="contrato/{{ dado.cd_ua }}">{{ dado.ug }}</a></u></td>
+                            <td>{{ dado.diariodata }}</td>
+                            <td>{{ dado.data | if_str_None:'Data não cadastrada' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                {% if tipo != None %}
+                    <table class="table" id="refaca_busca">
+                        <thead>
+                        <tr>
+                            <th>Nenhum resultado encontrato. Por favor, tente novamente!</th>
+                        </tr>
+                        </thead>
+                    </table>
+                {% endif %}
+            {% endif %}
+        </div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'sici_site/base.html' %}
+
+{% load if_str_None %}
+
+{% block conteudo %}
+     <div class="container">
+
+         <h3 id="link_nova_consulta"><a href="/">Nova Consulta</a></h3>
+         <h3 id="link_consulta_geral"><a href="/geral">Consultar Todos os Registros</a></h3>
+
+            <form method="get">
+                <div class="input-group">
+                    <span class="input-group-text">Pesquisar por data:</span>
+                    <input id="data" name="data" type="date" class="form-control" required>
+                    <button id="pesquisa_unidade">Pesquisar</button>
+                </div>
+            </form>
+
+        <div class="row2">
+            <table class="table" id="tabela_cd_ua">
+                <thead>
+                    <tr>
+                        <th scope="col">Periodo de gestão</th>
+                        <td>
+                            {{ dados.data_criacao_registro | date:'d/m/y' }} - {% if fim is None %} Atual {% else %} {{ fim | date:'d/m/y'}} {% endif %}
+                        </td>
+                    </tr>
+                <tr>
+                    <th scope="col">Código da Unidade</th>
+                    <td>
+                        {{ dados.cd_ua | if_str_None:"Código da Unidade não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Código da Unidade Básica</th>
+                    <td>
+                        {{ dados.cd_ua_basica | if_str_None:"Código da Unidade Básica não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Nome da Unidade Básica</th>
+                    <td>
+                        {{ dados.nome_ua_basica | if_str_None:"Nome da Unidade Básica não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Sigla UA</th>
+                    <td>
+                        {{ dados.sigla_ua | if_str_None:"Sigla da Unidade não Cadastrada" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Titular da Unidade</th>
+                    <td>
+                        {{ dados.titular | if_str_None:"Titular não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Cargo</th>
+                    <td>
+                        {{ dados.cargo | if_str_None:"Cargo não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Endereço</th>
+                    <td>
+                        {{ dados.nome_logradouro | if_str_None:"Endereço não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Numero</th>
+                    <td>
+                        {{ dados.nro | if_str_None:"Número não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Bairro</th>
+                    <td>
+                        {{ dados.bairro | if_str_None:"Bairro não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">CEP</th>
+                    <td>
+                        {{ dados.cep | if_str_None:"CEP não cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">E-mails</th>
+                    <td>
+                        {{ dados.emails | if_str_None:"E-mail não Cadastrado" }}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Telefones</th>
+                    <td>
+                        {{ dados.telefones | if_str_None:"Telefone não Cadastrado" }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}
